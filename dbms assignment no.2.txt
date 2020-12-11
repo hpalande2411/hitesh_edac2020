@@ -1,0 +1,167 @@
+1. List pname, phone, email from Publishers.
+
+-> select pname,phone,email from publishers;
+
+
+2. List aname, phone from Authors.
+
+-> select aname,phone from authors;
+
+
+3. List titleid, title, pubdate from Titles.
+
+-> select titleid,title,pubdate from titles;
+
+
+4. List auid, titleid, importance from titleauthors.
+
+-> select auid,titleid,importance from titleautors.
+
+
+*************************(like)***************************
+1. select subject name "oracle" from subjects table.
+-> select sname from subjects where sname like 'oracle%';
+
+2. select subject name starts whith 'j'.
+-> select sname from subjects where sname like 'j%';
+
+3. select subject name which contains ".net" .
+-> select sname from subjects sname like '%.net';
+
+4. select author name ends whith 'er'.
+-> select aname from Authors where aname 
+
+5. select publishers name which contains "hill".
+-> select pName from Publishers where pName like '%hill%';
+
+
+******************(relational operator)***********************
+1. select title from title table having price less than 500.
+->select title from Titles where price<500;
+
+2. select title from title table published before '3 april'.
+-> select title from Titles where pubDate < '2005-04-03';
+
+3. select subject name from subject having id as 'java' or 'jee'.
+->. select subject name from subject having id as 'java' or 'jee'.
+
+4. seelct author name from author table id greater than '103'.
+-> select aName from Authors where audID > 103;
+
+5. select all from title having titleid as 101 or price > 400.
+-> select * from Titles where price > 500 or titleID = 1001;
+
+
+**********************(IN operator)*************************
+6.select all from publishers table  where publisher name is ('TECHMEDIA', 'WROX');
+->select * from publishers where pname in("TECHMEDIA","WROX");
+
+******************(aggregate function)**********************
+1. select maximum price from titles table.
+->select max(price) from Titles;
+
+2. select average importance from titleauthors.
+->select avg(importance) from TitleAuthors;
+ 
+3. select number of records from author table.
+->select sum(price),avg(price) from Titles;
+
+
+4. select sum of prices of all books.
+->select sum(price) from titles;
+
+********************(date)********************************
+1. select title from title table where month is 'Apr'.
+-> select title from titles where month(pubdate)=4;
+
+2. select year from system date.
+-> select year(sysdate()) as year;
+
+3. select month from system date.
+-> select month(sysdate()) as month;
+
+4. select last day of month when 'java' book published.
+-> select last_day(pubdate) from titles  where subid='java';
+
+**********************(DML)*******************************
+create table Employee with emp_id (number),emp_name(char(50)) and insert some value.
+create table employee2(
+emp_id numeric(5),
+emp_name char(50));
+
+insert into employee2 values(1,'Viraj'),(2,'Yash');
+
+
+
+
+1. Add one column name 'dept_id ' in table name 'Employee';
+->alter table employee2 add(dept_id int(3));
+
+2. Change the datatype of column 'char' from tablename 'Employee' to 'varchar2'.
+- alter table employee2 modify emp_name varchar(50);
+
+3. update name of employee to 'Scott'
+-> rename table employee2 to Scott;
+
+4. truncate the table.
+-> truncate table Scott;
+
+
+Functions
+
+1.round:
+->select round(sal,1) from employee;
+
+2.truncate:
+->select truncate(sal,2) from employee;
+
+3.ceil:
+->select ceil(sal) from employee;
+
+4.floor:
+->select floor(sal) from employee;
+
+5.sign:
+->select sign(sal) from employee;
+
+6.mod:
+->select mod(sal,2) from employee;
+
+7.sqrt:
+->select sqrt(sal) from employee;
+
+8.pow:
+->select pow(sal,2) from employee;
+
+
+
+*****************************************************************
+1. perform all string function on string "CDAC juhu".
+
+
+select char_length("CDAC JUHU") as char_length;
+select concat("CDAC JUHU",' ',"MUMBAI") as concat;
+select insert("Welcome",1,5,"CDAC JUHU") as insrt;
+select lcase ("CDAC JUHU");
+select ucase("cdac juhu");
+select reverse("CDAC JUHU");
+select space("CDAC JUHU");
+select trim("  CDAC JUHU  ");
+
+2. perform different date and time functions. 
+
+
+select sysdate();
+select current_date();
+select current_date()+1;
+SELECT CURDATE()+0;
+select CURRENT_TIME();
+select current_time()+0;
+select monthname("1998-08-16");
+select dayname("1996-11-06");
+select dayofweek("1998-08-16");
+SELECT LAST_DAY('1998-08-16');
+select makedate(2021,130);
+ SELECT HOUR('11:05:03');
+ select now();
+ SELECT DATE_ADD('1998-07-16', INTERVAL 31 DAY);
