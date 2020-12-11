@@ -1,0 +1,88 @@
+
+		ASSIGNMENT 3
+
+1)	create table Department with dept_id(integer),dept_name(varchar(50)).
+dept_id will be foreign key in Employee table.
+
+-> create table Department(
+   dept_id int(1) primary key,
+   dept_name varchar(50)
+   );
+
+2) create table Employee with emp_id(int(2),emp_name varchar(10), dept_id int(1), salary(int(4)),manager(int(1)))
+dept_id is foreign key.
+
+
+->	create table Employee(
+	empid int (2) Auto_increment primary key,
+	emp_name varchar(10),
+	dept_id int(1),
+	salary int(4),
+	manager int(1),
+	foreign key (dept_id)
+	references Department (dept_id);
+
+
+-> 	insert into Employee (emp_name, dept_id, salary, manager) values
+	('Arun', 1, 8000, 4),
+	('Kiran', 1, 7000, 1),
+	('Scott', 1, 3000, 1),
+	('Max', 2, 9000, null),
+	('Jack', 2, 8000, 4),
+	('King',null,6000,1);
+
+
+->	insert into Department values
+	(1, 'Finance'),
+	(2, 'Training'),
+	(3, 'Marketing');
+
+
+->	alter table Employee auto_increment = 1;
+->	alter table Employee modify emp_name varchar(10) not null;
+
+
+***********order by
+
+
+1. select all from authors sort ascending by author name.
+
+-> select * from authors order by aname;
+
+
+2. select all from publishers sort descending by publisher name.
+
+-> select * from publishers order by desc pname;
+
+
+***********group by
+
+
+1. select all data and sum of salary from employee and group according to deptid.
+
+->	select sum(salary) dept_id from Employee
+	group by dept_id;
+
+2. select deptid and sum of salary where salary is greater than 17000 and group by deptid.
+
+-> select dept_id, sum(salary) from employee where salary>17000 and group by dept_id;
+
+
+
+*********having
+
+
+1. select deptid and sum of salary where sum of salary is greater than 18000 and grup by deptid.  
+
+->	select sum(salary),  dept_id from Employee
+	group by dept_id
+	having sum(salary) > 18000;
+
+
+
+2. select deptid and sum of salary where sum of salary is less than 20000 and grup by deptid.
+
+
+->	select sum(salary) dept_id from Employee
+	group by dept_id
+	having sum(salary)<20000;
